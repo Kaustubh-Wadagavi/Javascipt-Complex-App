@@ -5,19 +5,19 @@ const flash = require('connect-flash')
 const app = express()
 
 let sessionOptions = session({
-    secret: "Javascript is so cool",
-    store: new MongoStore({client: require('./db')}),
-    resave: false,
-    saveUninitialized: false,
-    cookie: {maxAge: 1000 * 60 * 60 * 24,httpOnly: true}
+  secret: "JavaScript is sooooooooo coool",
+  store: new MongoStore({client: require('./db')}),
+  resave: false,
+  saveUninitialized: false,
+  cookie: {maxAge: 1000 * 60 * 60 * 24, httpOnly: true}
 })
 
 app.use(sessionOptions)
 app.use(flash())
 
 app.use(function(req, res, next) {
-    res.locals.user = req.session.user
-    next()
+  res.locals.user = req.session.user
+  next()
 })
 
 const router = require('./router')
